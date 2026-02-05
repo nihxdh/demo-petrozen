@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./client/src/*"]
+    },
+    "types": ["node", "vite/client"]
+  },
+  "include": ["client/src/**/*"],
+  "exclude": ["node_modules", "build", "dist"]
+}
