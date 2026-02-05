@@ -1,11 +1,11 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import ContactForm from "@/components/ContactForm";
+import { HERO_URLS } from "@/lib/images";
 
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 
-const HERO =
-  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80";
+const HERO = HERO_URLS.CONTACT;
 
 export default function Contact() {
   return (

@@ -1,38 +1,34 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import IndustryCard from "@/components/IndustryCard";
+import { IMAGES, HERO_URLS } from "@/lib/images";
 
-const HERO =
-  "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2400&q=80";
+const HERO = HERO_URLS.INDUSTRIES;
 
 const items = [
   {
     title: "Oil & Gas",
     description:
       "Inspection planning, vendor documentation control, and evidence-based compliance for audit-ready delivery.",
-    image:
-      "https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=1600&q=80",
+    image: HERO_URLS.OIL_GAS,
   },
   {
     title: "Engineering",
     description:
       "Interface coordination, technical workflows, and structured documentation that keeps execution aligned.",
-    image:
-      "/src/assets/images/industrial-manufacturing.jpg",
+    image: IMAGES.INDUSTRIAL_MANUFACTURING,
   },
   {
     title: "Industrial",
     description:
       "Field-ready processes for quality, safety, and closeout across mechanical and electrical scopes.",
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80",
+    image: HERO_URLS.INFRASTRUCTURE_1,
   },
   {
     title: "Infrastructure",
     description:
       "Controls for schedule, quality, and compliance across multi-stakeholder delivery environments.",
-    image:
-      "https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1600&q=80",
+    image: HERO_URLS.INFRASTRUCTURE_2,
   },
 ];
 

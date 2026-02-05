@@ -1,6 +1,7 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import ServiceCard from "@/components/ServiceCard";
+import { HERO_URLS } from "@/lib/images";
 
 import {
   ShieldCheck,
@@ -14,8 +15,7 @@ import {
   Workflow,
 } from "lucide-react";
 
-const HERO =
-  "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2400&q=80";
+const HERO = HERO_URLS.SERVICES;
 
 export default function Services() {
   return (

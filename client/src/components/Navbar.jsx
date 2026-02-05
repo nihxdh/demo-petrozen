@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Button from "@/components/Button";
+import { IMAGES } from "@/lib/images";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -54,7 +55,7 @@ export default function Navbar() {
               className="flex items-center gap-2 text-foreground cursor-pointer"
             >
               <img
-                src="/src/assets/logo.png"
+                src={IMAGES.LOGO}
                 alt="Petrozen"
                 className="h-9 w-auto rounded-xl object-contain"
                 data-testid="navbar-logo"

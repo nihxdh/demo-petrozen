@@ -1,7 +1,8 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
+import { IMAGES } from "@/lib/images";
 
-const HERO = "/src/assets/images/industry-refinery.jpg";
+const HERO = IMAGES.INDUSTRY_REFINERY;
 
 export default function Certifications() {
   return (

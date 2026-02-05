@@ -1,8 +1,8 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
+import { HERO_URLS } from "@/lib/images";
 
-const HERO =
-  "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=2400&q=80";
+const HERO = HERO_URLS.PRIVACY;
 
 export default function Privacy() {
   return (

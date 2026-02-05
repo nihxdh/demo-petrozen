@@ -1,9 +1,9 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import ImageCard from "@/components/ImageCard";
+import { HERO_URLS } from "@/lib/images";
 
-const HERO =
-  "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80";
+const HERO = HERO_URLS.ABOUT;
 
 export default function About() {
   return (
@@ -130,7 +130,7 @@ export default function About() {
             <div className="lg:col-span-6">
               <img
                 data-testid="img-company"
-                src="https://images.unsplash.com/photo-1581093458791-9ab0a2e7b0e5?auto=format&fit=crop&w=2200&q=80"
+                src={HERO_URLS.COMPANY}
                 alt="Team working in an industrial setting"
                 className="w-full rounded-3xl shadow-[0_18px_50px_rgba(0,0,0,0.10)]"
                 loading="lazy"
@@ -203,7 +203,7 @@ export default function About() {
                   badge="Leadership"
                   title="Client-first"
                   description="Clear communication, honest estimates, and delivery aligned to your standards."
-                  imageSrc="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80"
+                  imageSrc={HERO_URLS.LEADERSHIP_1}
                   imageAlt="Corporate leadership meeting"
                 />
                 <ImageCard
@@ -211,7 +211,7 @@ export default function About() {
                   badge="Culture"
                   title="Craft & care"
                   description="We treat every closeout package as a signature of professionalism."
-                  imageSrc="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1400&q=80"
+                  imageSrc={HERO_URLS.LEADERSHIP_2}
                   imageAlt="Team collaborating in an office"
                 />
               </div>

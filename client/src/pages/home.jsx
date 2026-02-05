@@ -3,6 +3,7 @@ import SectionTitle from "@/components/SectionTitle";
 import ServiceCard from "@/components/ServiceCard";
 import ImageCard from "@/components/ImageCard";
 import Button from "@/components/Button";
+import { IMAGES, HERO_URLS } from "@/lib/images";
 
 import {
   ShieldCheck,
@@ -14,13 +15,11 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-const HERO = "/src/assets/images/industry-refinery.jpg";
-const LOGO = "/src/assets/logo.png";
-
-const INDUSTRY_1 = "/src/assets/images/industry-refinery.jpg";
-const INDUSTRY_2 = "/src/assets/images/industrial-manufacturing.jpg";
-const INDUSTRY_3 =
-  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80";
+const HERO = IMAGES.INDUSTRY_REFINERY;
+const LOGO = IMAGES.LOGO;
+const INDUSTRY_1 = IMAGES.INDUSTRY_REFINERY;
+const INDUSTRY_2 = IMAGES.INDUSTRIAL_MANUFACTURING;
+const INDUSTRY_3 = HERO_URLS.INFRASTRUCTURE_1;
 
 export default function Home() {
   return (
@@ -118,7 +117,7 @@ export default function Home() {
                   badge="Approach"
                   title="Quality-driven"
                   description="ISO-aligned methods, consistent reporting, and audit-ready outputs."
-                  imageSrc="/src/assets/images/industrial-manufacturing.jpg"
+                  imageSrc={IMAGES.INDUSTRIAL_MANUFACTURING}
                   imageAlt="Industrial engineers reviewing plans"
                 />
                 <ImageCard
@@ -126,7 +125,7 @@ export default function Home() {
                   badge="Delivery"
                   title="Safety-first"
                   description="Practical processes that support safe, efficient execution."
-                  imageSrc="/src/assets/images/industry-refinery.jpg"
+                  imageSrc={IMAGES.INDUSTRY_REFINERY}
                   imageAlt="Safety gear on an industrial site"
                 />
               </div>
