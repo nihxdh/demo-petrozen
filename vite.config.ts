@@ -21,6 +21,8 @@ export default defineConfig({
         ]
       : []),
   ],
+  // Vite root is "client", but we keep .env in "frontend/"
+  envDir: path.resolve(import.meta.dirname),
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),

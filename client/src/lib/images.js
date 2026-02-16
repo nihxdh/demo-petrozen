@@ -3,6 +3,7 @@ import logo from "@/assets/logo.png";
 import industryRefinery from "@/assets/images/industry-refinery.jpg";
 import industrialManufacturing from "@/assets/images/industrial-manufacturing.jpg";
 import heroOilGas from "@/assets/images/hero-oil-gas.png";
+import safety from "@/assets/images/safety.png";
 
 // Central image variables for use across all pages
 export const IMAGES = {
@@ -10,6 +11,7 @@ export const IMAGES = {
   INDUSTRY_REFINERY: industryRefinery,
   INDUSTRIAL_MANUFACTURING: industrialManufacturing,
   HERO_OIL_GAS: heroOilGas,
+  SAFETY: safety,
 };
 
 // External hero/placeholder URLs (used where no local asset)

@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Button from "@/components/Button";
 import { IMAGES } from "@/lib/images";
 
 const navItems = [
@@ -43,26 +42,26 @@ export default function Navbar() {
   return (
     <div
       className={cn(
-        "sticky top-0 z-50 border-b border-border/70 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/70 transition-all duration-300",
-        shouldHide ? "-translate-y-full -mb-16" : "translate-y-0",
+        "sticky top-0 z-50 border-b border-border/70 bg-white text-black transition-all duration-300",
+        shouldHide ? "-translate-y-full -mb-20" : "translate-y-0",
       )}
     >
       <div className="container-pad">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           <Link href="/">
             <span
               data-testid="link-brand"
-              className="flex items-center gap-2 text-foreground cursor-pointer"
+              className="flex items-center gap-3 text-black cursor-pointer"
             >
               <img
                 src={IMAGES.LOGO}
                 alt="Petrozen"
-                className="h-9 w-auto rounded-xl object-contain"
+                className="h-20 w-auto rounded-xl object-contain"
                 data-testid="navbar-logo"
               />
               <div className="leading-tight">
-                <div className="text-sm font-semibold serif">Petrozen</div>
-                <div className="text-xs text-muted-foreground">Industrial & Gas Mfg.</div>
+                <div className="text-base font-semibold tracking-tight">Petrozen</div>
+                <div className="text-sm text-black/70">Ignite Sucess, Fuel Progress</div>
               </div>
             </span>
           </Link>
@@ -73,8 +72,8 @@ export default function Navbar() {
                 <span
                   data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
                   className={cn(
-                    "text-sm transition-colors hover:text-foreground cursor-pointer",
-                    isActive(item.href) ? "text-foreground" : "text-muted-foreground",
+                    "text-base transition-colors cursor-pointer hover:text-primary hover:underline underline-offset-8 decoration-primary/60",
+                    isActive(item.href) ? "text-primary font-semibold" : "text-black/70",
                   )}
                 >
                   {item.label}
@@ -85,8 +84,8 @@ export default function Navbar() {
               <span
                 data-testid="link-nav-privacy"
                 className={cn(
-                  "text-sm transition-colors hover:text-foreground cursor-pointer",
-                  isActive("/privacy") ? "text-foreground" : "text-muted-foreground",
+                  "text-base transition-colors cursor-pointer hover:text-primary hover:underline underline-offset-8 decoration-primary/60",
+                  isActive("/privacy") ? "text-primary font-semibold" : "text-black/70",
                 )}
               >
                 Privacy
@@ -94,30 +93,19 @@ export default function Navbar() {
             </Link>
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
-            <Button
-              as="link"
-              href="/contact"
-              testId="button-nav-cta"
-              size="sm"
-            >
-              Request a consult
-            </Button>
-          </div>
-
           <button
             data-testid="button-nav-mobile"
-            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border/70 bg-background"
+            className="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border/70 bg-white text-black"
             onClick={() => setOpen((s) => !s)}
             aria-label="Toggle menu"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
       {open ? (
-        <div className="lg:hidden border-t border-border/70 bg-white/90 backdrop-blur">
+        <div className="lg:hidden border-t border-border/70 bg-white">
           <div className="container-pad py-4">
             <div className="grid gap-2">
               {navItems.map((item) => (
@@ -125,26 +113,16 @@ export default function Navbar() {
                   <span
                     data-testid={`link-mobile-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
                     className={cn(
-                      "block rounded-xl px-4 py-3 text-sm transition-colors cursor-pointer",
+                      "block rounded-xl px-4 py-3 text-base transition-colors cursor-pointer",
                       isActive(item.href)
-                        ? "bg-secondary text-foreground"
-                        : "text-muted-foreground hover:bg-secondary",
+                        ? "bg-primary/10 text-primary font-semibold"
+                        : "text-black/70 hover:bg-primary/10 hover:text-primary",
                     )}
                   >
                     {item.label}
                   </span>
                 </Link>
               ))}
-            </div>
-            <div className="mt-3">
-              <Button
-                as="link"
-                href="/contact"
-                testId="button-mobile-cta"
-                className="w-full"
-              >
-                Request a consult
-              </Button>
             </div>
           </div>
         </div>

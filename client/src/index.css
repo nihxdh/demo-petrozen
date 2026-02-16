@@ -97,4 +97,43 @@
   .soft-border {
     @apply border border-border/70;
   }
+
+  /* Scroll reveal animations (used on Home page sections) */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 700ms ease,
+      transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal[data-reveal="left"] {
+    transform: translate3d(-22px, 0, 0);
+  }
+
+  .reveal[data-reveal="right"] {
+    transform: translate3d(22px, 0, 0);
+  }
+
+  .reveal[data-reveal="zoom"] {
+    transform: scale(0.975);
+  }
+
+  .reveal[data-reveal="fade"] {
+    transform: none;
+  }
+
+  .reveal.is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
 }

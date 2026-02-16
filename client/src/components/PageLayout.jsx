@@ -1,3 +1,4 @@
+import { useLocation } from "wouter";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -7,10 +8,14 @@ export default function PageLayout({
   subtitle,
   heroImage,
   testId,
+  heroTitleFont,
 }) {
+  const [location] = useLocation();
+  const isAdminRoute = location?.startsWith("/admin");
+
   return (
     <div data-testid={testId} className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      {isAdminRoute ? null : <Navbar />}
       {title ? (
         <header className="relative">
           <div className="absolute inset-0">
@@ -30,7 +35,12 @@ export default function PageLayout({
             <div className="container-pad py-16 sm:py-20">
               <h1
                 data-testid="text-page-title"
-                className="text-4xl sm:text-5xl font-semibold serif text-white leading-tight"
+                className="text-4xl sm:text-5xl font-semibold text-white leading-tight tracking-tight"
+                style={
+                  heroTitleFont === "sans"
+                    ? { fontFamily: "var(--font-sans)" }
+                    : { fontFamily: "var(--font-serif)" }
+                }
               >
                 {title}
               </h1>
@@ -48,7 +58,7 @@ export default function PageLayout({
       ) : null}
 
       <main>{children}</main>
-      <Footer />
+      {isAdminRoute ? null : <Footer />}
     </div>
   );
 }

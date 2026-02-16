@@ -5,59 +5,66 @@ export default function Footer() {
   return (
     <footer data-testid="footer" className="mt-16 bg-foreground text-white">
       <div className="container-pad py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_2fr_1fr] gap-10">
           <div>
-            <div className="text-lg font-semibold serif">Petrozen</div>
+            <div className="text-base font-semibold tracking-tight">Petrozen</div>
             <p className="mt-3 text-sm text-white/75 leading-relaxed">
-              An industrial partner for energy, engineering, and infrastructure projects\u2014
-              quality-driven, safety-first, and delivery focused.
+              Petrozen provides certified oil and gas equipment and industrial solutions, fully aligned with international standards. With a focus on quality, safety, and inventory readiness, we support critical energy projects across the UAE and GCC.
             </p>
           </div>
 
           <div>
             <div className="text-sm font-semibold tracking-wide">Quick links</div>
             <div className="mt-4 grid gap-2 text-sm">
-              <Link href="/about">
-                <a data-testid="link-footer-about" className="text-white/75 hover:text-white">
-                  About
-                </a>
+              <Link
+                href="/about"
+                data-testid="link-footer-about"
+                className="text-white/75 hover:text-white"
+              >
+                About
               </Link>
-              <Link href="/services">
-                <a data-testid="link-footer-services" className="text-white/75 hover:text-white">
-                  Services
-                </a>
+              <Link
+                href="/services"
+                data-testid="link-footer-services"
+                className="text-white/75 hover:text-white"
+              >
+                Services
               </Link>
-              <Link href="/industries">
-                <a
-                  data-testid="link-footer-industries"
-                  className="text-white/75 hover:text-white"
-                >
-                  Industries
-                </a>
+              <Link
+                href="/industries"
+                data-testid="link-footer-industries"
+                className="text-white/75 hover:text-white"
+              >
+                Industries
               </Link>
-              <Link href="/certifications">
-                <a
-                  data-testid="link-footer-certifications"
-                  className="text-white/75 hover:text-white"
-                >
-                  Certifications
-                </a>
+              <Link
+                href="/certifications"
+                data-testid="link-footer-certifications"
+                className="text-white/75 hover:text-white"
+              >
+                Certifications
               </Link>
-              <Link href="/privacy">
-                <a data-testid="link-footer-privacy" className="text-white/75 hover:text-white">
-                  Privacy Policy
-                </a>
+              <Link
+                href="/privacy"
+                data-testid="link-footer-privacy"
+                className="text-white/75 hover:text-white"
+              >
+                Privacy Policy
               </Link>
             </div>
           </div>
 
-          <div>
+          <div className="lg:min-w-[280px]">
             <div className="text-sm font-semibold tracking-wide">Contact</div>
             <div className="mt-4 grid gap-3 text-sm text-white/75">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4" />
-                <div data-testid="text-footer-address">
-                  1200 Industry Way, Suite 410\nNewark, NJ 07102
+                <div data-testid="text-footer-address" className="whitespace-pre-line">
+                  {`Petrozen Equipment Trading LLC,
+Office No: 02, 1st Floor,
+Khalifa Ahmad Al Mubarak Building,
+M 11, Plot: 46,
+Musaffah Industrial Area, Abu Dhabi, UAE`}
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -70,7 +77,7 @@ export default function Footer() {
                 <Mail className="h-4 w-4" />
                 <a
                   data-testid="link-footer-email"
-                  href="mailto:info@petrozen.example"
+                  href="mailto:info@petrozen.ae"
                   className="hover:text-white"
                 >
                   info@petrozen.example

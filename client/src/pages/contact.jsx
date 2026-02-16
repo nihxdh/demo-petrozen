@@ -3,7 +3,7 @@ import SectionTitle from "@/components/SectionTitle";
 import ContactForm from "@/components/ContactForm";
 import { HERO_URLS } from "@/lib/images";
 
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 const HERO = HERO_URLS.CONTACT;
 
@@ -11,9 +11,10 @@ export default function Contact() {
   return (
     <PageLayout
       testId="page-contact"
-      title="Contact"
-      subtitle="Tell us what you\u2019re building. We\u2019ll respond with a clear next step."
+      title="Contact Us"
+      subtitle="Tell us what you're building. We'll respond with a clear next step."
       heroImage={HERO}
+      heroTitleFont="sans"
     >
       <section data-testid="section-contact" className="py-16 sm:py-20">
         <div className="container-pad">
@@ -22,8 +23,9 @@ export default function Contact() {
               <SectionTitle
                 testId="title-contact"
                 eyebrow="Get in touch"
-                title="Let\u2019s discuss your project"
-                description="This is a frontend-only prototype form. You can still use it to validate layout, content, and interaction."
+                title="Let's discuss your project"
+                titleFont="sans"
+                titleClassName="tracking-tight"
               />
 
               <div className="mt-8 grid gap-4">
@@ -31,28 +33,15 @@ export default function Contact() {
                   {
                     icon: MapPin,
                     label: "Address",
-                    value: "1200 Industry Way, Suite 410\nNewark, NJ 07102",
+                    value: "Petrozen Equipment Trading LLC,\nOffice No: 02, 1st Floor,\nKhalifa Ahmad Al Mubarak Building,\nM 11, Plot: 46,\nMusaffah Industrial Area, Abu Dhabi, UAE",
                     testId: "text-contact-address",
-                  },
-                  {
-                    icon: Phone,
-                    label: "Phone",
-                    value: "+1 (555) 014-0",
-                    href: "tel:+1-555-0140",
-                    testId: "link-contact-phone",
                   },
                   {
                     icon: Mail,
                     label: "Email",
-                    value: "hello@apexindustrial.example",
-                    href: "mailto:hello@apexindustrial.example",
+                    value: "info@petrozen.ae",
+                    href: "mailto:info@petrozen.ae",
                     testId: "link-contact-email",
-                  },
-                  {
-                    icon: Clock,
-                    label: "Office hours",
-                    value: "Mon\u2013Fri: 9:00\u201317:00\nSat\u2013Sun: Closed",
-                    testId: "text-contact-hours",
                   },
                 ].map((x) => (
                   <div
@@ -65,7 +54,7 @@ export default function Contact() {
                         <x.icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <div className="text-sm font-semibold serif">{x.label}</div>
+                        <div className="text-sm font-semibold tracking-tight">{x.label}</div>
                         {x.href ? (
                           <a
                             data-testid={x.testId}
@@ -95,7 +84,7 @@ export default function Contact() {
                   className="h-64 w-full"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?q=Newark%20NJ&output=embed"
+                  src="https://www.google.com/maps?q=Musaffah+Industrial+Area+Abu+Dhabi+UAE&output=embed"
                 />
               </div>
             </div>

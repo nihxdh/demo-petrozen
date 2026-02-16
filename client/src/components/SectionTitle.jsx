@@ -6,6 +6,9 @@ export default function SectionTitle({
   description,
   align = "left",
   className,
+  descriptionClassName,
+  titleClassName,
+  titleFont,
   testId,
 }) {
   return (
@@ -22,11 +25,29 @@ export default function SectionTitle({
           {eyebrow}
         </div>
       ) : null}
-      <h2 className="mt-3 text-3xl sm:text-4xl leading-tight font-semibold serif">
+      <h2
+        className={cn(
+          "mt-3 text-3xl sm:text-4xl leading-tight font-semibold serif",
+          titleClassName,
+        )}
+        style={
+          titleFont
+            ? {
+                fontFamily:
+                  titleFont === "sans" ? "var(--font-sans)" : "var(--font-serif)",
+              }
+            : undefined
+        }
+      >
         {title}
       </h2>
       {description ? (
-        <p className="mt-3 text-base sm:text-lg text-muted-foreground leading-relaxed">
+        <p
+          className={cn(
+            "mt-3 text-base sm:text-lg text-muted-foreground leading-relaxed",
+            descriptionClassName,
+          )}
+        >
           {description}
         </p>
       ) : null}

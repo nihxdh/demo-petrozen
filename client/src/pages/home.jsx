@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import ServiceCard from "@/components/ServiceCard";
 import ImageCard from "@/components/ImageCard";
 import Button from "@/components/Button";
 import { IMAGES, HERO_URLS } from "@/lib/images";
+import HERO_TEST_1 from "../assets/images/heroTest1.jpeg";
 
 import {
   ShieldCheck,
@@ -15,20 +17,60 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
-const HERO = IMAGES.INDUSTRY_REFINERY;
+const HERO = HERO_TEST_1;
 const LOGO = IMAGES.LOGO;
 const INDUSTRY_1 = IMAGES.INDUSTRY_REFINERY;
 const INDUSTRY_2 = IMAGES.INDUSTRIAL_MANUFACTURING;
 const INDUSTRY_3 = HERO_URLS.INFRASTRUCTURE_1;
 
 export default function Home() {
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => setIsAtTop(window.scrollY <= 0);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (elements.length === 0) return;
+
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      elements.forEach((el) => el.classList.add("is-revealed"));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+    );
+
+    elements.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <PageLayout testId="page-home">
-      <section data-testid="section-hero" className="relative overflow-hidden">
+      <section
+        data-testid="section-hero"
+        className="relative overflow-hidden h-screen h-[100svh]"
+      >
         <img
           src={HERO}
           alt=""
-          className="w-full h-auto"
+          className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
         />
         <div className="absolute inset-0 bg-black/55" />
@@ -39,7 +81,7 @@ export default function Home() {
               <img
                 src={LOGO}
                 alt="Petrozen"
-                className="h-14 w-auto sm:h-16"
+                className={`h-20 w-auto sm:h-24 ${isAtTop ? "" : "invisible"}`}
                 data-testid="hero-logo"
               />
               <div
@@ -50,53 +92,35 @@ export default function Home() {
               </div>
               <h1
                 data-testid="text-hero-title"
-                className="mt-4 text-4xl sm:text-6xl font-semibold serif text-white leading-[1.05]"
+                className="mt-4 text-5xl sm:text-7xl font-semibold tracking-tight text-white leading-[1.05]"
               >
-                Leading oil & gas manufacturing in the region
+                Igniting Success Worldwide Through Oil & Gas Innovation
               </h1>
               <p
                 data-testid="text-hero-subtitle"
-                className="mt-5 text-base sm:text-lg text-white/85 leading-relaxed"
+                className="mt-5 text-lg sm:text-xl text-white/85 leading-relaxed"
               >
-                Specializing in high-precision industrial components and infrastructure for the
-                energy sector. Quality-driven, safety-first, and built for the future of the
-                Middle East.
+                Petrozen provides certified oil and gas equipment and industrial solutions, fully aligned with international standards. With a focus on quality, safety, and inventory readiness, we support critical energy projects across the UAE and GCC.
               </p>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Button
-                  as="link"
-                  href="/services"
-                  testId="button-hero-primary"
-                  size="lg"
-                >
-                  Our Capabilities
-                </Button>
-                <Button
-                  as="link"
-                  href="/contact"
-                  testId="button-hero-secondary"
-                  size="lg"
-                  variant="secondary"
-                  className="bg-white/10 text-white border-white/15 hover:bg-white/15"
-                >
-                  Contact Sales
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>
       </section>
 
       <section data-testid="section-about-preview" className="py-16 sm:py-20">
-        <div className="container-pad">
+        <div className="container-pad reveal" data-reveal="left">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
               <SectionTitle
                 testId="title-about-preview"
                 eyebrow="About"
-                title="A partner built for field realities"
-                description="We blend classical discipline with modern delivery: clean documentation, rigorous checks, and practical support that holds up on site."
+                title="A partner built on an unwavering commitment to excellence"
+                description="We enable successful project outcomes in the oil and gas sector by combining disciplined processes, coordinated efforts, and dependable execution, all guided by the specific expectations of our clients."
+                descriptionClassName="text-sm sm:text-base"
+                titleFont="sans"
+                titleClassName="tracking-tight"
               />
               <div className="mt-7">
                 <Button
@@ -105,7 +129,7 @@ export default function Home() {
                   testId="button-about-more"
                   variant="secondary"
                 >
-                  Learn about our team
+                  More on About
                 </Button>
               </div>
             </div>
@@ -114,19 +138,21 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <ImageCard
                   testId="card-about-1"
-                  badge="Approach"
                   title="Quality-driven"
                   description="ISO-aligned methods, consistent reporting, and audit-ready outputs."
                   imageSrc={IMAGES.INDUSTRIAL_MANUFACTURING}
                   imageAlt="Industrial engineers reviewing plans"
+                  variant="overlay"
+                  aspectRatio="5/6"
                 />
                 <ImageCard
                   testId="card-about-2"
-                  badge="Delivery"
                   title="Safety-first"
                   description="Practical processes that support safe, efficient execution."
-                  imageSrc={IMAGES.INDUSTRY_REFINERY}
+                  imageSrc={IMAGES.SAFETY}
                   imageAlt="Safety gear on an industrial site"
+                  variant="overlay"
+                  aspectRatio="5/6"
                 />
               </div>
             </div>
@@ -135,7 +161,7 @@ export default function Home() {
       </section>
 
       <section data-testid="section-services-preview" className="py-16 sm:py-20 bg-secondary">
-        <div className="container-pad">
+        <div className="container-pad reveal" data-reveal="up">
           <SectionTitle
             testId="title-services-preview"
             eyebrow="Services"
@@ -192,7 +218,7 @@ export default function Home() {
       </section>
 
       <section data-testid="section-industries" className="py-16 sm:py-20">
-        <div className="container-pad">
+        <div className="container-pad reveal" data-reveal="right">
           <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6">
             <SectionTitle
               testId="title-industries"
@@ -237,7 +263,7 @@ export default function Home() {
       </section>
 
       <section data-testid="section-why" className="py-16 sm:py-20 bg-secondary">
-        <div className="container-pad">
+        <div className="container-pad reveal" data-reveal="zoom">
           <SectionTitle
             testId="title-why"
             eyebrow="Why choose us"
@@ -284,7 +310,7 @@ export default function Home() {
       </section>
 
       <section data-testid="section-certifications" className="py-16 sm:py-20">
-        <div className="container-pad">
+        <div className="container-pad reveal" data-reveal="fade">
           <SectionTitle
             testId="title-certs"
             eyebrow="Certifications"
@@ -315,7 +341,7 @@ export default function Home() {
       </section>
 
       <section data-testid="section-cta" className="py-16 sm:py-20 bg-foreground">
-        <div className="container-pad">
+        <div className="container-pad reveal" data-reveal="up">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12 shadow-[0_24px_70px_rgba(0,0,0,0.25)]">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div className="lg:col-span-8">
@@ -323,7 +349,7 @@ export default function Home() {
                   Ready to de-risk delivery?
                 </h3>
                 <p data-testid="text-cta-subtitle" className="mt-3 text-white/75 max-w-2xl">
-                  Tell us about your project. We\u2019ll respond with a clear next step and a
+                  Tell us about your project. We'll 2019 respond with a clear next step and a
                   proposed path to support.
                 </p>
               </div>
