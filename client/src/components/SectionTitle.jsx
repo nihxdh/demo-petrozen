@@ -42,14 +42,14 @@ export default function SectionTitle({
         {title}
       </h2>
       {description ? (
-        <p
+        <div
           className={cn(
             "mt-3 text-base sm:text-lg text-muted-foreground leading-relaxed",
             descriptionClassName,
           )}
         >
-          {description}
-        </p>
+          {typeof description === "string" ? <p>{description}</p> : description}
+        </div>
       ) : null}
     </div>
   );

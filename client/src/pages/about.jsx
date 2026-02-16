@@ -1,11 +1,39 @@
+import { useEffect } from "react";
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
-import ImageCard from "@/components/ImageCard";
-import { IMAGES, HERO_URLS } from "@/lib/images";
+import { IMAGES } from "@/lib/images";
 
 const HERO = IMAGES.ABOUT_HERO;
 
 export default function About() {
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll("[data-reveal]"));
+    if (elements.length === 0) return;
+
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      elements.forEach((el) => el.classList.add("is-revealed"));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-revealed");
+          io.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -5% 0px" },
+    );
+
+    elements.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
   return (
     <PageLayout
       testId="page-about"
@@ -17,7 +45,7 @@ export default function About() {
       <section data-testid="section-company-overview" className="py-16 sm:py-20">
         <div className="container-pad">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 reveal" data-reveal="left">
               <SectionTitle
                 testId="title-overview"
                 eyebrow="Company overview"
@@ -26,7 +54,7 @@ export default function About() {
                 titleFont="sans"
               />
             </div>
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 reveal" data-reveal="right">
               <img
                 data-testid="img-about-overview"
                 src={IMAGES.ABOUT_US}
@@ -36,12 +64,12 @@ export default function About() {
               />
             </div>
           </div>
-          <div className="mt-10 w-full max-w-none">
+          <div className="mt-10 w-full max-w-none reveal" data-reveal="fade">
             <div className="space-y-4">
-              <p className="text-base text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                 Our operations are built on disciplined supply chain management, vendor qualification systems, and strict quality assurance processes. Through inventory readiness, coordinated logistics, and HSE-compliant practices, we ensure reliable oil & gas supply solutions for upstream, offshore, onshore, and refining operations across the UAE and wider GCC region.
               </p>
-              <p className="text-base text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                 As a growing oil & gas services company, Petrozen focuses on operational excellence, technical compliance, and long-term partnerships, supporting complex industrial environments where performance, safety, and documentation control are critical.
               </p>
             </div>
@@ -55,7 +83,7 @@ export default function About() {
           style={{ backgroundImage: `url(${IMAGES.MISSION_VISION_ABOUT})` }}
           aria-hidden
         />
-        <div className="container-pad relative z-10">
+        <div className="container-pad relative z-10 reveal" data-reveal="zoom">
           <SectionTitle
             testId="title-mission"
             eyebrow="Mission & vision"
@@ -64,15 +92,15 @@ export default function About() {
             align="center"
           />
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5">
+                <div className="reveal rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5" data-reveal="left" style={{ transitionDelay: "0ms" }}>
                   <div className="text-lg font-semibold">Mission</div>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  <p className="mt-2 text-base text-muted-foreground leading-relaxed">
                   Our mission is to deliver high-quality oil and gas equipment and integrated engineering services that enhance operational efficiency, safety, and reliability across the UAE energy sector. We are committed to supporting upstream, midstream, and downstream oil and gas operations with technically advanced solutions and responsive industrial services. Through strict adherence to international standards, local regulatory compliance, and oilfield engineering best practices, we ensure excellence in every project we undertake. We build long-term partnerships by prioritizing integrity, performance, and customer satisfaction, contributing meaningfully to the UAE’s energy infrastructure development and industrial growth.
                   </p>
                 </div>
-                <div className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5">
+                <div className="reveal rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5" data-reveal="right" style={{ transitionDelay: "100ms" }}>
                   <div className="text-lg font-semibold">Vision</div>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                  <p className="mt-2 text-base text-muted-foreground leading-relaxed">
                   Our vision is to become the leading and most trusted oil and gas solutions provider in Abu Dhabi and the wider GCC energy market. We aspire to set industry benchmarks in quality, innovation, and operational excellence for the oilfield and industrial services sector. By continuously investing in advanced technology, skilled talent, and sustainable energy practices, we aim to deliver long-term value for our clients, partners, and stakeholders. We envision playing a strategic role in supporting national energy initiatives, future-ready energy infrastructure, and the UAE’s industrial growth. Our goal is to build a resilient and reliable organization recognized for leadership, innovation, and measurable impact in the global oil and gas industry.
                   </p>
                 </div>
@@ -82,13 +110,15 @@ export default function About() {
 
       <section data-testid="section-values" className="py-16 sm:py-20">
         <div className="container-pad">
-          <SectionTitle
-            testId="title-values"
-            eyebrow="Core values"
-            title="Principles we operate by"
-            align="center"
-            titleFont="sans"
-          />
+          <div className="reveal" data-reveal="fade">
+            <SectionTitle
+              testId="title-values"
+              eyebrow="Core values"
+              title="Principles we operate by"
+              align="center"
+              titleFont="sans"
+            />
+          </div>
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
@@ -108,11 +138,13 @@ export default function About() {
                 t: "Integrity",
                 d: "We conduct our business with honesty, transparency, and accountability. Upholding the highest ethical standards ensures trust and fosters long-term relationships with our clients, partners, and stakeholders.",
               },
-            ].map((x) => (
+            ].map((x, i) => (
               <div
                 key={x.t}
                 data-testid={`card-value-${x.t.toLowerCase().replace(/\s+/g, "-")}`}
-                className="group relative h-[360px] rounded-2xl bg-gradient-to-br from-[#0036A4] to-[#0680F4] p-6 shadow-sm shadow-black/10 overflow-hidden transition-shadow duration-300 hover:shadow-md border border-white/10"
+                data-reveal="zoom"
+                className="reveal group relative h-[360px] rounded-2xl bg-gradient-to-br from-[#0036A4] to-[#0680F4] p-6 shadow-sm shadow-black/10 overflow-hidden transition-shadow duration-300 hover:shadow-md border border-white/10"
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
                 <div className="absolute inset-0 flex items-center justify-center p-6 transition-all duration-300 group-hover:items-start group-hover:justify-start group-hover:pt-6">
                   <div className="text-lg font-semibold text-white text-center transition-all duration-300 group-hover:text-left">{x.t}</div>
@@ -122,70 +154,6 @@ export default function About() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section data-testid="section-company-image" className="py-16 sm:py-20 bg-secondary">
-        <div className="container-pad">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6">
-              <img
-                data-testid="img-company"
-                src={HERO_URLS.COMPANY}
-                alt="Team working in an industrial setting"
-                className="w-full rounded-3xl shadow-[0_18px_50px_rgba(0,0,0,0.10)]"
-                loading="lazy"
-              />
-            </div>
-            <div className="lg:col-span-6">
-              <SectionTitle
-                testId="title-image"
-                eyebrow="On site"
-                title="Support that matches the pace of execution"
-                description="We\u2019re designed to integrate with your team and deliver artifacts that match your operating rhythm\u2014from field packs to closeout dossiers."
-                titleFont="sans"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section data-testid="section-leadership" className="py-16 sm:py-20 bg-secondary">
-        <div className="container-pad">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-5">
-              <SectionTitle
-                testId="title-leadership"
-                eyebrow="Leadership message"
-                title="Documentation is the backbone of trust"
-                description="\u201cIn industrial environments, quality isn\u2019t a slogan\u2014it\u2019s a record. Our work is built to make that record clear, complete, and credible.\u201d"
-                titleFont="sans"
-              />
-              <div className="mt-5 text-sm text-muted-foreground">
-                \u2014 Managing Director, Petrozen
-              </div>
-            </div>
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <ImageCard
-                  testId="card-lead-1"
-                  badge="Leadership"
-                  title="Client-first"
-                  description="Clear communication, honest estimates, and delivery aligned to your standards."
-                  imageSrc={HERO_URLS.LEADERSHIP_1}
-                  imageAlt="Corporate leadership meeting"
-                />
-                <ImageCard
-                  testId="card-lead-2"
-                  badge="Culture"
-                  title="Craft & care"
-                  description="We treat every closeout package as a signature of professionalism."
-                  imageSrc={HERO_URLS.LEADERSHIP_2}
-                  imageAlt="Team collaborating in an office"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>

@@ -1,19 +1,9 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
-import ServiceCard from "@/components/ServiceCard";
+import Button from "@/components/Button";
 import { IMAGES } from "@/lib/images";
 
-import {
-  ShieldCheck,
-  ClipboardList,
-  HardHat,
-  Gauge,
-  Factory,
-  Building2,
-  FileCheck2,
-  ListChecks,
-  Workflow,
-} from "lucide-react";
+import { BadgeCheck, Clock, Layers, PackageCheck } from "lucide-react";
 
 const HERO = IMAGES.SERVICES_HERO;
 
@@ -32,131 +22,202 @@ export default function Services() {
             testId="title-services"
             eyebrow="What we do"
             title="Core service lines"
-            description="A modular set of services you can engage independently or as an integrated package."
+            className="max-w-none w-full"
+            description={
+              <>
+                <p>
+                  At Petrozen, we provide comprehensive Service & Maintenance solutions designed to
+                  support critical industrial operations across Abu Dhabi and the wider GCC region. Our
+                  expertise extends beyond supplying high-performance industrial lubricants we ensure
+                  that rotating equipment and essential machinery operate with maximum efficiency,
+                  reliability, and safety.
+                </p>
+                <p className="mt-4">
+                  Our service approach focuses on preventive care, technical precision, and rapid
+                  response, helping clients minimize downtime and extend equipment life in demanding oil
+                  & gas and industrial environments.
+                </p>
+              </>
+            }
+            titleFont="sans"
+          />
+        </div>
+      </section>
+
+      <section data-testid="section-service-categories" className="py-16 sm:py-20 bg-secondary">
+        <div className="container-pad">
+          <SectionTitle
+            testId="title-service-categories"
+            eyebrow="Service categories"
+            title="Categories of services we provide"
+            // description="Choose a service category below and get in touch for a tailored solution."
+            align="center"
             titleFont="sans"
           />
 
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ServiceCard
-              testId="service-quality"
-              title="Quality assurance & control"
-              description="Inspection planning, ITPs, NCR workflows, vendor oversight, and closeout readiness."
-              icon={ShieldCheck}
-            />
-            <ServiceCard
-              testId="service-docs"
-              title="Project documentation"
-              description="Registers, transmittals, MDRs, as-builts, and handover dossiers that are consistent and complete."
-              icon={ClipboardList}
-            />
-            <ServiceCard
-              testId="service-field"
-              title="Field execution support"
-              description="Work packs, method statements, permits, and site coordination aligned to safe execution."
-              icon={HardHat}
-            />
-            <ServiceCard
-              testId="service-engineering"
-              title="Engineering coordination"
-              description="Interface tracking, RFIs, technical queries, and design change control support."
-              icon={Gauge}
-            />
-            <ServiceCard
-              testId="service-compliance"
-              title="Industrial compliance"
-              description="Compliance planning, evidence management, supplier qualification support, and audits."
-              icon={Factory}
-            />
-            <ServiceCard
-              testId="service-infra"
-              title="Infrastructure delivery"
-              description="Controls for schedule, quality, and closeout across complex scopes and stakeholders."
-              icon={Building2}
-            />
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              data-testid="card-service-air-compressor"
+              className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5 flex flex-col"
+            >
+              <h3 className="text-xl font-semibold">Air Compressor Services</h3>
+              <div className="mt-3 space-y-3 text-sm text-muted-foreground leading-relaxed flex-1">
+                <p>
+                One of the leading air compressor service specialists in the UAE and Sharjah, committed to quality and reliability. From routine maintenance to emergency breakdown support, our technical team ensures optimal compressor performance, energy efficiency, and operational reliability. 
+                </p>
+              </div>
+              <Button
+                as="link"
+                href="/contact"
+                testId="button-enquiry-air-compressor"
+                className="mt-6 w-full sm:w-auto"
+              >
+                Enquiry now
+              </Button>
+            </div>
+
+            <div
+              data-testid="card-service-vacuum-pump"
+              className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5 flex flex-col"
+            >
+              <h3 className="text-xl font-semibold">Vacuum Pump Services</h3>
+              <div className="mt-3 space-y-3 text-sm text-muted-foreground leading-relaxed flex-1">
+                <p>Looking for reliable vacuum pump services in Dubai? You’ve come to the right place. Our experienced technical team delivers professional maintenance, troubleshooting, and repair solutions for vacuum pumps across various industries.
+                </p>
+              </div>
+              <Button
+                as="link"
+                href="/contact"
+                testId="button-enquiry-vacuum-pump"
+                className="mt-6 w-full sm:w-auto"
+              >
+                Enquiry now
+              </Button>
+            </div>
+
+            <div
+              data-testid="card-service-cnc"
+              className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5 flex flex-col"
+            >
+              <h3 className="text-xl font-semibold">CNC Services</h3>
+              <div className="mt-3 space-y-3 text-sm text-muted-foreground leading-relaxed flex-1">
+                <p>
+                  Our preventive maintenance programs are structured to reduce unexpected breakdowns
+                  and improve equipment lifecycle. Through scheduled inspections, performance
+                  monitoring, and technical evaluation, we help clients maintain uninterrupted
+                  operations while lowering long-term maintenance costs.
+                </p>
+              </div>
+              <Button
+                as="link"
+                href="/contact"
+                testId="button-enquiry-cnc"
+                className="mt-6 w-full sm:w-auto"
+              >
+                Enquiry now
+              </Button>
+            </div>
           </div>
         </div>
       </section>
+
+      <section data-testid="section-service-teams" className="py-16 sm:py-20 ">
+        <div className="container-pad">
+          <SectionTitle
+            testId="title-service-teams"
+            eyebrow="Field expertise & support"
+            title="Our Service Engineers & Support Team"
+            className="max-w-none w-full"
+            description={
+              <>
+                <p>
+                  Our skilled and certified service engineers operate across Abu Dhabi and the UAE,
+                  delivering reliable maintenance and technical support for all major rotary screw
+                  compressor brands. With strong field experience, our team ensures early fault
+                  detection, efficient troubleshooting, and professional servicing to minimize
+                  downtime.
+                </p>
+                <p className="mt-4">
+                  We maintain ready stock of essential service kits and fast-moving spare parts to
+                  support routine maintenance and emergency breakdowns. Using digital reporting
+                  systems, our engineers provide quick documentation, transparent communication,
+                  and responsive aftermarket support to ensure smooth and uninterrupted operations.
+                </p>
+                <p className="mt-4">
+                  Our dedicated service support team ensures seamless coordination from planning to
+                  aftermarket assistance. Backed by strong in-house technical expertise, we provide
+                  prompt and efficient responses to customer requirements across all major compressor
+                  brands.
+                </p>
+                <p className="mt-4">
+                  Using advanced monitoring tools and a structured service database, we schedule
+                  maintenance at predefined intervals based on equipment type, usage, and operating
+                  conditions. Our tailored maintenance approach helps maximize equipment reliability,
+                  performance, and operational continuity.
+                </p>
+              </>
+            }
+            titleFont="sans"
+          />
+        </div>
+      </section>
+
+      
 
       <section data-testid="section-process" className="py-16 sm:py-20 bg-secondary">
         <div className="container-pad">
           <SectionTitle
             testId="title-process"
             eyebrow="How it works"
-            title="A simple, repeatable process"
-            description="Clear steps that reduce ambiguity and keep delivery aligned."
+            title="A Simple, Guaranteed Process"
             align="center"
             titleFont="sans"
           />
 
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               {
-                t: "Assess",
-                d: "Confirm scope, standards, and acceptance criteria. Align on outputs.",
-                i: ListChecks,
+                t: "Certified Service Engineers",
+                d: "Trained and certified technicians to deliver expert service and maintenance.",
+                i: BadgeCheck,
               },
               {
-                t: "Implement",
-                d: "Deploy templates, registers, and checkpoints. Coordinate with your team.",
-                i: Workflow,
+                t: "Multi-Brand Service Support",
+                d: "Expert support across leading industrial and lubricant brands.",
+                i: Layers,
               },
               {
-                t: "Prove",
-                d: "Package evidence for reviews, audits, and handover. Closeout with confidence.",
-                i: FileCheck2,
+                t: "24/7 Service Response",
+                d: "Round-the-clock availability for critical operations and emergencies.",
+                i: Clock,
               },
-            ].map((x) => (
-              <div
-                key={x.t}
-                data-testid={`card-process-${x.t.toLowerCase()}`}
-                className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <x.i className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="text-lg font-semibold">{x.t}</div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{x.d}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section data-testid="section-industry-support" className="py-16 sm:py-20">
-        <div className="container-pad">
-          <SectionTitle
-            testId="title-support"
-            eyebrow="Industry support"
-            title="Built to adapt across environments"
-            description="Our methods remain consistent while documentation and checkpoints adapt to your standards."
-            titleFont="sans"
-          />
-
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {["Oil & Gas", "Engineering", "Industrial", "Infrastructure"].map((label, idx) => (
-              <div
-                key={label}
-                data-testid={`row-support-${idx}`}
-                className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <ListChecks className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <div className="text-lg font-semibold">{label}</div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                      Templates and evidence structures tailored to common standards and client
-                      expectations in {label.toLowerCase()} environments.
-                    </p>
+              {
+                t: "Quality Spare Parts Availability",
+                d: "Genuine parts and quality spares to keep your equipment running.",
+                i: PackageCheck,
+              },
+            ].map((x, idx) => {
+              const isBlue = idx % 2 === 0;
+              const background = isBlue
+                ? "linear-gradient(to bottom right, #064CCA, #068FFC)"
+                : "linear-gradient(to bottom right, #239012, #57C50D)";
+              return (
+                <div
+                  key={x.t}
+                  data-testid={`card-process-${x.t.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="rounded-2xl border-0 p-6 sm:p-8 shadow-lg text-center text-white"
+                  style={{ background }}
+                >
+                  <div className="flex flex-col items-center gap-4">
+                    <x.i className="h-10 w-10 shrink-0 text-white" />
+                    <div>
+                      <div className="text-lg font-semibold">{x.t}</div>
+                      <p className="mt-2 text-sm text-white/90 leading-relaxed">{x.d}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
