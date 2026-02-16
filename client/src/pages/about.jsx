@@ -1,9 +1,9 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import ImageCard from "@/components/ImageCard";
-import { HERO_URLS } from "@/lib/images";
+import { IMAGES, HERO_URLS } from "@/lib/images";
 
-const HERO = HERO_URLS.ABOUT;
+const HERO = IMAGES.ABOUT_HERO;
 
 export default function About() {
   return (
@@ -12,84 +12,70 @@ export default function About() {
       title="About"
       subtitle="A disciplined partner for quality, compliance, and execution support."
       heroImage={HERO}
+      heroTitleFont="sans"
     >
       <section data-testid="section-company-overview" className="py-16 sm:py-20">
         <div className="container-pad">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div className="lg:col-span-5">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            <div className="lg:col-span-7">
               <SectionTitle
                 testId="title-overview"
                 eyebrow="Company overview"
-                title="Classical rigor, modern delivery"
-                description="Petrozen supports project teams with clear documentation, quality systems, and field-ready processes. We focus on traceability and practical execution\u2014so work holds up under review and on site."
+                title="Precision in Every Pipeline"
+                description="Petrozen is a leading oil & gas equipment supplier in the UAE, supporting critical energy and infrastructure projects across the region. Since its establishment, the company has been focused on delivering certified oilfield equipment, mechanical systems, pumps, valves, and industrial supply solutions aligned with international engineering standards."
+                titleFont="sans"
               />
             </div>
-            <div className="lg:col-span-7">
-              <div className="rounded-2xl soft-border bg-card p-6 sm:p-8 shadow-sm shadow-black/5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <div className="text-sm font-semibold serif">What we do</div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                      Quality assurance & control, documentation systems, compliance evidence,
-                      and execution support across industrial projects.
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold serif">How we work</div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                      Structured, transparent workflows with clear checkpoints and client-ready
-                      outputs.
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold serif">What you get</div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                      Reduced ambiguity, improved closeout readiness, and documentation that
-                      aligns teams.
-                    </p>
-                  </div>
-                  <div>
-                    <div className="text-sm font-semibold serif">Where we operate</div>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                      Oil & gas, engineering, industrial, and infrastructure environments.
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="lg:col-span-5">
+              <img
+                data-testid="img-about-overview"
+                src={IMAGES.ABOUT_US}
+                alt="Quality and precision at the core of what we do"
+                className="w-full max-w-[90%] ml-0 lg:ml-auto rounded-2xl shadow-[0_18px_50px_rgba(0,0,0,0.10)] object-cover"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div className="mt-10 w-full max-w-none">
+            <div className="space-y-4">
+              <p className="text-base text-muted-foreground leading-relaxed">
+                Our operations are built on disciplined supply chain management, vendor qualification systems, and strict quality assurance processes. Through inventory readiness, coordinated logistics, and HSE-compliant practices, we ensure reliable oil & gas supply solutions for upstream, offshore, onshore, and refining operations across the UAE and wider GCC region.
+              </p>
+              <p className="text-base text-muted-foreground leading-relaxed">
+                As a growing oil & gas services company, Petrozen focuses on operational excellence, technical compliance, and long-term partnerships, supporting complex industrial environments where performance, safety, and documentation control are critical.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section data-testid="section-mission" className="py-16 sm:py-20 bg-secondary">
-        <div className="container-pad">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-5">
-              <SectionTitle
-                testId="title-mission"
-                eyebrow="Mission & vision"
-                title="Make quality visible"
-                description="Our mission is to help teams execute safely, document clearly, and demonstrate quality through evidence that\u2019s easy to understand and hard to dispute."
-              />
-            </div>
-            <div className="lg:col-span-7">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <section data-testid="section-mission" className="relative py-16 sm:py-20 bg-secondary overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+          style={{ backgroundImage: `url(${IMAGES.MISSION_VISION_ABOUT})` }}
+          aria-hidden
+        />
+        <div className="container-pad relative z-10">
+          <SectionTitle
+            testId="title-mission"
+            eyebrow="Mission & vision"
+            title="Make quality visible"
+            titleFont="sans"
+            align="center"
+          />
+          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5">
-                  <div className="text-lg font-semibold serif">Mission</div>
+                  <div className="text-lg font-semibold">Mission</div>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Support industrial teams with robust systems and practical field support
-                    that reduce risk and improve delivery outcomes.
+                  Our mission is to deliver high-quality oil and gas equipment and integrated engineering services that enhance operational efficiency, safety, and reliability across the UAE energy sector. We are committed to supporting upstream, midstream, and downstream oil and gas operations with technically advanced solutions and responsive industrial services. Through strict adherence to international standards, local regulatory compliance, and oilfield engineering best practices, we ensure excellence in every project we undertake. We build long-term partnerships by prioritizing integrity, performance, and customer satisfaction, contributing meaningfully to the UAE’s energy infrastructure development and industrial growth.
                   </p>
                 </div>
                 <div className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5">
-                  <div className="text-lg font-semibold serif">Vision</div>
+                  <div className="text-lg font-semibold">Vision</div>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                    Become the trusted standard for documentation clarity and compliance
-                    evidence across complex projects.
+                  Our vision is to become the leading and most trusted oil and gas solutions provider in Abu Dhabi and the wider GCC energy market. We aspire to set industry benchmarks in quality, innovation, and operational excellence for the oilfield and industrial services sector. By continuously investing in advanced technology, skilled talent, and sustainable energy practices, we aim to deliver long-term value for our clients, partners, and stakeholders. We envision playing a strategic role in supporting national energy initiatives, future-ready energy infrastructure, and the UAE’s industrial growth. Our goal is to build a resilient and reliable organization recognized for leadership, innovation, and measurable impact in the global oil and gas industry.
                   </p>
                 </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -100,24 +86,40 @@ export default function About() {
             testId="title-values"
             eyebrow="Core values"
             title="Principles we operate by"
-            description="Simple standards, consistently applied."
             align="center"
+            titleFont="sans"
           />
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { t: "Integrity", d: "Do the right thing\u2014even when no one is watching." },
-              { t: "Discipline", d: "Processes that keep work clean, safe, and traceable." },
-              { t: "Clarity", d: "Documentation and communication that reduce friction." },
-              { t: "Ownership", d: "We take accountability for outputs and outcomes." },
+              {
+                t: "Core Focus",
+                d: "We are dedicated to continuous improvement and pursuing excellence across all aspects of our operations. By crafting effective business strategies, we adapt to the evolving needs of our customers, ensuring satisfaction and fostering loyalty. Supported by a robust distribution network, we deliver quality and reliability across the markets we serve.",
+              },
+              {
+                t: "Customer Satisfaction",
+                d: "At Petrozen, we prioritize our customers in every decision we make. By understanding their needs and delivering tailored solutions, we ensure a seamless experience and build long-term trust. Our commitment to quality, reliability, and responsive service guarantees that our customers' expectations are not just met, but exceeded.",
+              },
+              {
+                t: "Innovation",
+                d: "We embrace innovation to stay ahead in a rapidly evolving market. By adopting advanced technologies and creative approaches, we provide solutions that drive efficiency, reliability, and progress for our customers.",
+              },
+              {
+                t: "Integrity",
+                d: "We conduct our business with honesty, transparency, and accountability. Upholding the highest ethical standards ensures trust and fosters long-term relationships with our clients, partners, and stakeholders.",
+              },
             ].map((x) => (
               <div
                 key={x.t}
-                data-testid={`card-value-${x.t.toLowerCase()}`}
-                className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5"
+                data-testid={`card-value-${x.t.toLowerCase().replace(/\s+/g, "-")}`}
+                className="group relative h-[360px] rounded-2xl bg-gradient-to-br from-[#0036A4] to-[#0680F4] p-6 shadow-sm shadow-black/10 overflow-hidden transition-shadow duration-300 hover:shadow-md border border-white/10"
               >
-                <div className="text-lg font-semibold serif">{x.t}</div>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{x.d}</p>
+                <div className="absolute inset-0 flex items-center justify-center p-6 transition-all duration-300 group-hover:items-start group-hover:justify-start group-hover:pt-6">
+                  <div className="text-lg font-semibold text-white text-center transition-all duration-300 group-hover:text-left">{x.t}</div>
+                </div>
+                <p className="absolute inset-x-0 bottom-0 top-14 p-6 pt-0 text-sm text-white/90 leading-relaxed opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {x.d}
+                </p>
               </div>
             ))}
           </div>
@@ -142,42 +144,9 @@ export default function About() {
                 eyebrow="On site"
                 title="Support that matches the pace of execution"
                 description="We\u2019re designed to integrate with your team and deliver artifacts that match your operating rhythm\u2014from field packs to closeout dossiers."
+                titleFont="sans"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section data-testid="section-timeline" className="py-16 sm:py-20">
-        <div className="container-pad">
-          <SectionTitle
-            testId="title-story"
-            eyebrow="Timeline"
-            title="Our story"
-            description="A steady, deliberate build\u2014focused on standards and delivery." 
-          />
-
-          <div className="mt-10 grid gap-4">
-            {[
-              { y: "2016", t: "Founded", d: "Built around quality systems and documentation discipline." },
-              { y: "2019", t: "Expanded", d: "Added execution support for industrial and infrastructure scopes." },
-              { y: "2022", t: "Standardized", d: "Developed ISO-aligned templates and evidence frameworks." },
-              { y: "2025", t: "Modernized", d: "Introduced digital registers and consistent reporting systems." },
-            ].map((x) => (
-              <div
-                key={x.y}
-                data-testid={`row-timeline-${x.y}`}
-                className="rounded-2xl soft-border bg-card p-6 shadow-sm shadow-black/5"
-              >
-                <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                  <div className="text-lg font-semibold serif">{x.t}</div>
-                  <div className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground">
-                    {x.y}
-                  </div>
-                </div>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{x.d}</p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -191,6 +160,7 @@ export default function About() {
                 eyebrow="Leadership message"
                 title="Documentation is the backbone of trust"
                 description="\u201cIn industrial environments, quality isn\u2019t a slogan\u2014it\u2019s a record. Our work is built to make that record clear, complete, and credible.\u201d"
+                titleFont="sans"
               />
               <div className="mt-5 text-sm text-muted-foreground">
                 \u2014 Managing Director, Petrozen

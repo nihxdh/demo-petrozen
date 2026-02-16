@@ -1,7 +1,7 @@
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import ServiceCard from "@/components/ServiceCard";
-import { HERO_URLS } from "@/lib/images";
+import { IMAGES } from "@/lib/images";
 
 import {
   ShieldCheck,
@@ -15,7 +15,7 @@ import {
   Workflow,
 } from "lucide-react";
 
-const HERO = HERO_URLS.SERVICES;
+const HERO = IMAGES.SERVICES_HERO;
 
 export default function Services() {
   return (
@@ -24,6 +24,7 @@ export default function Services() {
       title="Services"
       subtitle="Focused capabilities to support quality, compliance, and delivery."
       heroImage={HERO}
+      heroTitleFont="sans"
     >
       <section data-testid="section-service-cards" className="py-16 sm:py-20">
         <div className="container-pad">
@@ -32,6 +33,7 @@ export default function Services() {
             eyebrow="What we do"
             title="Core service lines"
             description="A modular set of services you can engage independently or as an integrated package."
+            titleFont="sans"
           />
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -83,6 +85,7 @@ export default function Services() {
             title="A simple, repeatable process"
             description="Clear steps that reduce ambiguity and keep delivery aligned."
             align="center"
+            titleFont="sans"
           />
 
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -113,7 +116,7 @@ export default function Services() {
                     <x.i className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-lg font-semibold serif">{x.t}</div>
+                    <div className="text-lg font-semibold">{x.t}</div>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{x.d}</p>
                   </div>
                 </div>
@@ -130,6 +133,7 @@ export default function Services() {
             eyebrow="Industry support"
             title="Built to adapt across environments"
             description="Our methods remain consistent while documentation and checkpoints adapt to your standards."
+            titleFont="sans"
           />
 
           <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -144,7 +148,7 @@ export default function Services() {
                     <ListChecks className="h-5 w-5" />
                   </div>
                   <div>
-                    <div className="text-lg font-semibold serif">{label}</div>
+                    <div className="text-lg font-semibold">{label}</div>
                     <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                       Templates and evidence structures tailored to common standards and client
                       expectations in {label.toLowerCase()} environments.

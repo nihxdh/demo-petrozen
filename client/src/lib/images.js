@@ -4,6 +4,10 @@ import industryRefinery from "@/assets/images/industry-refinery.jpg";
 import industrialManufacturing from "@/assets/images/industrial-manufacturing.jpg";
 import heroOilGas from "@/assets/images/hero-oil-gas.png";
 import safety from "@/assets/images/safety.png";
+import servicesHero from "@/assets/images/servicesHero.avif";
+import aboutUsHero from "@/assets/images/aboutUsHero.jpg";
+import aboutUS from "@/assets/images/aboutUS.jpg";
+import missionVisionAbout from "@/assets/images/missionandvisiomAbout.png";
 
 // Central image variables for use across all pages
 export const IMAGES = {
@@ -12,14 +16,16 @@ export const IMAGES = {
   INDUSTRIAL_MANUFACTURING: industrialManufacturing,
   HERO_OIL_GAS: heroOilGas,
   SAFETY: safety,
+  SERVICES_HERO: servicesHero,
+  ABOUT_HERO: aboutUsHero,
+  ABOUT_US: aboutUS,
+  MISSION_VISION_ABOUT: missionVisionAbout,
 };
 
 // External hero/placeholder URLs (used where no local asset)
 export const HERO_URLS = {
   ABOUT:
     "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80",
-  SERVICES:
-    "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2400&q=80",
   CONTACT:
     "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2400&q=80",
   PRIVACY:

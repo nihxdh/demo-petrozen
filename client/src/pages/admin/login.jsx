@@ -43,29 +43,39 @@ export default function AdminLogin() {
 
   return (
     <PageLayout testId="page-admin-login">
-      <div className="container-pad py-10 sm:py-14 min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <div className="mx-auto w-full max-w-md">
-          <div className="rounded-2xl soft-border bg-card p-6 sm:p-8 shadow-sm shadow-black/5">
-            <div className="flex flex-col items-center text-center">
-              <img
-                src={IMAGES.LOGO}
-                alt="Petrozen"
-                className="h-16 w-auto"
-                data-testid="admin-login-logo"
-              />
-              <h1 className="mt-4 text-xl font-semibold tracking-tight">
+      <div className="container-pad py-10 sm:py-14 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center">
+        <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 mb-8">
+          <img
+            src={IMAGES.LOGO}
+            alt="Petrozen"
+            className="h-28 sm:h-32 w-auto"
+            data-testid="admin-login-logo"
+          />
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight">
+              PETROZEN
+            </h2>
+            <div
+              className="mt-1.5 text-sm font-semibold tracking-[0.22em] uppercase text-muted-foreground"
+              data-testid="admin-login-tagline"
+            >
+              Ignite Success, Fuel Progress
+            </div>
+          </div>
+        </div>
+        <div className="mx-auto w-full max-w-lg">
+          <div className="rounded-2xl border border-border/80 bg-card p-8 sm:p-10 shadow-lg shadow-black/10">
+            <div className="flex flex-col items-center text-center mb-8">
+              <h1 className="text-2xl font-semibold tracking-tight">
                 Admin Login
               </h1>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Sign in to manage categories and products.
-              </p>
             </div>
 
-            <form onSubmit={onSubmit} className="mt-6 grid gap-4">
+            <form onSubmit={onSubmit} className="grid gap-5">
               <div>
                 <label
                   htmlFor="username"
-                  className="text-sm font-medium text-foreground"
+                  className="text-base font-medium text-foreground"
                 >
                   Username
                 </label>
@@ -74,7 +84,7 @@ export default function AdminLogin() {
                   id="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="mt-2 h-11 w-full rounded-xl border border-border/70 bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+                  className="mt-2 h-12 w-full rounded-xl border border-border/70 bg-background px-4 text-base outline-none focus:ring-2 focus:ring-ring"
                   placeholder="admin username"
                   autoComplete="username"
                 />
@@ -83,7 +93,7 @@ export default function AdminLogin() {
               <div>
                 <label
                   htmlFor="password"
-                  className="text-sm font-medium text-foreground"
+                  className="text-base font-medium text-foreground"
                 >
                   Password
                 </label>
@@ -93,7 +103,7 @@ export default function AdminLogin() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
-                  className="mt-2 h-11 w-full rounded-xl border border-border/70 bg-background px-3 text-sm outline-none focus:ring-2 focus:ring-ring"
+                  className="mt-2 h-12 w-full rounded-xl border border-border/70 bg-background px-4 text-base outline-none focus:ring-2 focus:ring-ring"
                   placeholder="admin password"
                   autoComplete="current-password"
                 />
@@ -102,16 +112,17 @@ export default function AdminLogin() {
               {error ? (
                 <div
                   data-testid="status-admin-login-error"
-                  className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+                  className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-base text-red-700"
                 >
                   {error}
                 </div>
               ) : null}
 
-              <div className="mt-2 flex items-center gap-3">
+              <div className="mt-4 flex items-center gap-3">
                 <Button
                   testId="button-admin-login"
                   type="submit"
+                  size="lg"
                   disabled={!canSubmit}
                 >
                   {isSubmitting ? "Signing in…" : "Sign in"}

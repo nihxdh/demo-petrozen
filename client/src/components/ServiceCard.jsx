@@ -20,7 +20,7 @@ export default function ServiceCard({
           <Icon className="h-5 w-5" strokeWidth={2} />
         </div>
         <div>
-          <div className="text-lg font-semibold serif">{title}</div>
+          <div className="text-lg font-semibold">{title}</div>
           <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
             {description}
           </p>

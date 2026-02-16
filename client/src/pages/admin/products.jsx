@@ -630,8 +630,8 @@ export default function AdminProducts() {
                                 </option>
                               ))}
                             </select>
-                          </div>
-                        </div>
+        </div>
+      </div>
 
                         <div>
                           <label className="text-xs font-medium text-muted-foreground" htmlFor={`edit-product-title-${item._id}`}>
