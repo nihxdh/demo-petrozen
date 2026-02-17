@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -14,10 +14,16 @@ const navItems = [
   { label: "Privacy Policy", href: "/privacy" },
 ];
 
+const SCROLL_DOWN_THRESHOLD = 12;
+const SCROLL_UP_THRESHOLD = 8;
+const TOP_THRESHOLD = 24;
+
 export default function Navbar() {
   const [location] = useLocation();
+  const isHome = location === "/";
   const [open, setOpen] = useState(false);
-  const [isAtTop, setIsAtTop] = useState(true);
+  const [visible, setVisible] = useState(!isHome);
+  const lastScrollY = useRef(0);
   const isActive = useMemo(
     () => (href) => (href === "/" ? location === "/" : location.startsWith(href)),
     [location],
@@ -28,22 +34,38 @@ export default function Navbar() {
   }, [location]);
 
   useEffect(() => {
+    if (isHome) setVisible(false);
+    else setVisible(true);
+  }, [isHome]);
+
+  useEffect(() => {
     const handleScroll = () => {
-      setIsAtTop(window.scrollY <= 0);
+      const current = window.scrollY;
+      const last = lastScrollY.current;
+      lastScrollY.current = current;
+
+      if (isHome) {
+        setVisible(current > TOP_THRESHOLD);
+      } else {
+        if (current <= TOP_THRESHOLD) {
+          setVisible(true);
+          return;
+        }
+        const diff = current - last;
+        if (diff > SCROLL_DOWN_THRESHOLD) setVisible(false);
+        else if (diff < -SCROLL_UP_THRESHOLD) setVisible(true);
+      }
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const shouldHide = location === "/" && isAtTop;
+  }, [isHome]);
 
   return (
     <div
       className={cn(
-        "sticky top-0 z-50 border-b border-border/70 bg-white text-black transition-all duration-300",
-        shouldHide ? "-translate-y-full -mb-20" : "translate-y-0",
+        "fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-white/95 text-black backdrop-blur-sm transition-transform duration-300 ease-out",
+        visible ? "translate-y-0 shadow-sm" : "-translate-y-full",
       )}
     >
       <div className="container-pad">
@@ -56,12 +78,12 @@ export default function Navbar() {
               <img
                 src={IMAGES.LOGO}
                 alt="Petrozen"
-                className="h-20 w-auto rounded-xl object-contain"
+                className="h-12 w-auto rounded-xl object-contain"
                 data-testid="navbar-logo"
               />
               <div className="leading-tight">
-                <div className="text-base font-semibold tracking-tight">Petrozen</div>
-                <div className="text-sm text-black/70">Ignite Sucess, Fuel Progress</div>
+                <div className="text-lg font-semibold tracking-tight">Petrozen</div>
+                <div className="text-base text-black/70">Ignite Sucess, Fuel Progress</div>
               </div>
             </span>
           </Link>

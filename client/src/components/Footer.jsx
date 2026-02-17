@@ -3,7 +3,7 @@ import { Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer data-testid="footer" className="mt-16 bg-foreground text-white">
+    <footer data-testid="footer" className="bg-foreground text-white">
       <div className="container-pad py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_2fr_1fr] gap-10">
           <div>

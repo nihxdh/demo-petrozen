@@ -12,9 +12,14 @@ export default function PageLayout({
 }) {
   const [location] = useLocation();
   const isAdminRoute = location?.startsWith("/admin");
+  const isHome = location === "/";
+  const needsNavbarSpace = !isAdminRoute && !isHome;
 
   return (
-    <div data-testid={testId} className="min-h-screen bg-background text-foreground">
+    <div
+      data-testid={testId}
+      className={`min-h-screen bg-background text-foreground ${needsNavbarSpace ? "pt-20" : ""}`}
+    >
       {isAdminRoute ? null : <Navbar />}
       {title ? (
         <header className="relative">

@@ -8,6 +8,9 @@ import servicesHero from "@/assets/images/servicesHero.avif";
 import aboutUsHero from "@/assets/images/aboutUsHero.jpg";
 import aboutUS from "@/assets/images/aboutUS.jpg";
 import missionVisionAbout from "@/assets/images/missionandvisiomAbout.png";
+import airCompService from "@/assets/images/airCompService.jpeg";
+import vaccumPumpServices from "@/assets/images/vaccumPumpServives.png";
+import cncServices from "@/assets/images/cncServices.jpeg";
 
 // Central image variables for use across all pages
 export const IMAGES = {
@@ -20,6 +23,9 @@ export const IMAGES = {
   ABOUT_HERO: aboutUsHero,
   ABOUT_US: aboutUS,
   MISSION_VISION_ABOUT: missionVisionAbout,
+  AIR_COMP_SERVICE: airCompService,
+  VACUUM_PUMP_SERVICE: vaccumPumpServices,
+  CNC_SERVICE: cncServices,
 };
 
 // External hero/placeholder URLs (used where no local asset)
