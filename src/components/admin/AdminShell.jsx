@@ -11,6 +11,9 @@ export default function AdminShell({
   actions,
   children,
   className,
+  headerBare = false,
+  headerLogo,
+  sectionBare = false,
 }) {
   const [, setLocation] = useLocation();
 
@@ -30,29 +33,42 @@ export default function AdminShell({
 
       <main className="min-w-0 flex-1 overflow-auto">
         <div className="space-y-6 p-6 sm:p-8">
-          <header className="rounded-2xl soft-border bg-card p-5 sm:p-6 shadow-sm shadow-black/5">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div className="min-w-0">
-                  <h1 className="text-2xl sm:text-[28px] font-semibold tracking-tight">
-                    {title}
-                  </h1>
-                  {subtitle ? (
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {subtitle}
-                    </p>
-                  ) : null}
-                </div>
-                {actions ? (
-                  <div className="flex flex-wrap items-center gap-2 sm:justify-end">
-                    {actions}
-                  </div>
+          <header
+            className={cn(
+              "flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between",
+              !headerBare && "rounded-2xl soft-border bg-card p-5 sm:p-6 shadow-sm shadow-black/5",
+            )}
+          >
+            <div className="min-w-0 flex items-center gap-3">
+              {headerLogo ? (
+                <img
+                  src={headerLogo}
+                  alt=""
+                  className="h-9 w-9 shrink-0 object-contain"
+                  aria-hidden
+                />
+              ) : null}
+              <div>
+                <h1 className="text-2xl sm:text-[28px] font-semibold tracking-tight">
+                  {title}
+                </h1>
+                {subtitle ? (
+                  <p className="mt-1 text-sm text-muted-foreground">
+                    {subtitle}
+                  </p>
                 ) : null}
               </div>
-            </header>
+            </div>
+            {actions ? (
+              <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+                {actions}
+              </div>
+            ) : null}
+          </header>
 
             <section
               className={cn(
-                "rounded-2xl soft-border bg-card p-6 sm:p-8 shadow-sm shadow-black/5",
+                sectionBare ? "" : "rounded-2xl soft-border bg-card p-6 sm:p-8 shadow-sm shadow-black/5",
                 className,
               )}
             >

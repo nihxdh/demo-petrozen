@@ -1,12 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  FolderTree,
-  Layers,
-  Package,
-  LogOut,
-} from "lucide-react";
+import logo from "@/assets/logo.png";
+import { FolderTree, Layers, Package, LogOut } from "lucide-react";
 import { clearAdminToken, getAdminToken } from "@/lib/adminAuth";
 
 const navItems = [
@@ -32,8 +27,8 @@ export default function AdminSidebar({ className }) {
     >
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-border/80 px-5 py-4">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-          <LayoutDashboard className="h-5 w-5" aria-hidden />
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl">
+          <img src={logo} alt="Petrozen" className="h-full w-full object-contain" />
         </div>
         <div className="min-w-0">
           <h2 className="truncate font-semibold tracking-tight text-foreground">

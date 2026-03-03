@@ -40,13 +40,6 @@ const SERVICE_CARDS = [
     imageSrcKey: "HOME_SERVICE_CARD_3",
   },
   {
-    id: "card-service-4",
-    title: "Technical Sales Support",
-    description:
-      "Receive professional guidance for selecting the right industrial equipment, lubricants, and solutions. Our technical support team assists with specifications, product matching, and project-based recommendations to meet operational requirements.",
-    imageSrcKey: "HOME_SERVICE_CARD_4",
-  },
-  {
     id: "card-service-5",
     title: "End-to-End Industrial Procurement",
     description:
@@ -232,10 +225,11 @@ export default function Home() {
           />
         </div>
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-4 px-4">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-4 px-4 justify-items-stretch max-w-[1600px] mx-auto items-stretch">
           {SERVICE_CARDS.map((card, idx) => (
             <motion.div
               key={card.id}
+              className="h-full flex"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
@@ -248,7 +242,7 @@ export default function Home() {
                 title={card.title}
                 description={card.description}
                 imageSrc={IMAGES[card.imageSrcKey]}
-                className="transition-shadow duration-300 hover:shadow-lg min-h-0 sm:min-h-[380px]"
+                className="transition-shadow duration-300 hover:shadow-lg w-full h-full min-h-[320px] sm:min-h-[380px]"
               />
             </motion.div>
           ))}
@@ -360,7 +354,7 @@ export default function Home() {
           <SectionTitle
             testId="title-why"
             eyebrow="Why choose us"
-            
+            title="The Backbone of Modern Machinery"
             align="center"
           />
 
