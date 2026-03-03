@@ -5,12 +5,19 @@ import industrialManufacturing from "@/assets/images/industrial-manufacturing.jp
 import heroOilGas from "@/assets/images/hero-oil-gas.png";
 import safety from "@/assets/images/safety.png";
 import servicesHero from "@/assets/images/servicesHero.avif";
+import serviceMain from "@/assets/images/serviceMain.jpeg";
 import aboutUsHero from "@/assets/images/aboutUsHero.jpg";
 import aboutUS from "@/assets/images/aboutUS.jpg";
 import missionVisionAbout from "@/assets/images/missionandvisiomAbout.png";
 import airCompService from "@/assets/images/airCompService.jpeg";
 import vaccumPumpServices from "@/assets/images/vaccumPumpServives.png";
 import cncServices from "@/assets/images/cncServices.jpeg";
+
+import homeService1 from "@/assets/images/homeServiceCard/serviceCard1.webp";
+import homeService2 from "@/assets/images/homeServiceCard/serviceCard2.webp";
+import homeService3 from "@/assets/images/homeServiceCard/serviceCard3.webp";
+import homeService4 from "@/assets/images/homeServiceCard/seviceCard4.webp";
+import homeService5 from "@/assets/images/homeServiceCard/serviceCard5.webp";
 
 // Central image variables for use across all pages
 export const IMAGES = {
@@ -19,13 +26,19 @@ export const IMAGES = {
   INDUSTRIAL_MANUFACTURING: industrialManufacturing,
   HERO_OIL_GAS: heroOilGas,
   SAFETY: safety,
-  SERVICES_HERO: servicesHero,
+  SERVICES_HERO: serviceMain,
   ABOUT_HERO: aboutUsHero,
   ABOUT_US: aboutUS,
   MISSION_VISION_ABOUT: missionVisionAbout,
   AIR_COMP_SERVICE: airCompService,
   VACUUM_PUMP_SERVICE: vaccumPumpServices,
   CNC_SERVICE: cncServices,
+
+  HOME_SERVICE_CARD_1: homeService1,
+  HOME_SERVICE_CARD_2: homeService2,
+  HOME_SERVICE_CARD_3: homeService3,
+  HOME_SERVICE_CARD_4: homeService4,
+  HOME_SERVICE_CARD_5: homeService5,
 };
 
 // External hero/placeholder URLs (used where no local asset)

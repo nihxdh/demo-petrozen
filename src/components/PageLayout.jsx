@@ -8,7 +8,6 @@ export default function PageLayout({
   subtitle,
   heroImage,
   testId,
-  heroTitleFont,
 }) {
   const [location] = useLocation();
   const isAdminRoute = location?.startsWith("/admin");
@@ -40,12 +39,8 @@ export default function PageLayout({
             <div className="container-pad py-16 sm:py-20">
               <h1
                 data-testid="text-page-title"
-                className="text-4xl sm:text-5xl font-semibold text-white leading-tight tracking-tight"
-                style={
-                  heroTitleFont === "sans"
-                    ? { fontFamily: "var(--font-sans)" }
-                    : { fontFamily: "var(--font-serif)" }
-                }
+                className="text-4xl sm:text-5xl font-semibold text-white leading-tight tracking-tight font-sans"
+                style={{ fontFamily: "var(--font-sans)" }}
               >
                 {title}
               </h1>

@@ -1,9 +1,10 @@
+import { Link } from "wouter";
 import PageLayout from "@/components/PageLayout";
 import SectionTitle from "@/components/SectionTitle";
 import ContactForm from "@/components/ContactForm";
 import { HERO_URLS } from "@/lib/images";
 
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, ShieldCheck } from "lucide-react";
 
 const HERO = HERO_URLS.CONTACT;
 
@@ -91,6 +92,24 @@ export default function Contact() {
 
             <div className="lg:col-span-7">
               <ContactForm testId="form-contact" />
+              <Link href="/privacy">
+                <span
+                  data-testid="link-contact-privacy"
+                  className="mt-6 flex items-center gap-3 rounded-2xl border-2 border-dashed border-primary/30 bg-primary/5 p-6 cursor-pointer text-foreground/80 hover:text-primary hover:bg-primary/10 hover:border-primary/50 transition-colors"
+                >
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                    <ShieldCheck className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold tracking-tight flex items-center gap-2">
+                    <span>Privacy</span>
+                    <span className="w-px h-4 bg-current opacity-50" aria-hidden />
+                    <span>Policy</span>
+                  </div>
+                    <div className="mt-0.5 text-sm opacity-80">How we collect, use and protect your information.</div>
+                  </div>
+                </span>
+              </Link>
             </div>
           </div>
         </div>

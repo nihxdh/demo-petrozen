@@ -8,7 +8,6 @@ export default function SectionTitle({
   className,
   descriptionClassName,
   titleClassName,
-  titleFont,
   testId,
 }) {
   return (
@@ -27,17 +26,10 @@ export default function SectionTitle({
       ) : null}
       <h2
         className={cn(
-          "mt-3 text-3xl sm:text-4xl leading-tight font-semibold serif",
+          "mt-3 text-3xl sm:text-4xl leading-tight font-semibold font-sans",
           titleClassName,
         )}
-        style={
-          titleFont
-            ? {
-                fontFamily:
-                  titleFont === "sans" ? "var(--font-sans)" : "var(--font-serif)",
-              }
-            : undefined
-        }
+        style={{ fontFamily: "var(--font-sans)" }}
       >
         {title}
       </h2>

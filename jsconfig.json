@@ -7,10 +7,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./client/src/*"]
+      "@/*": ["./src/*"]
     },
     "types": ["node", "vite/client"]
   },
-  "include": ["client/src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "dist"]
 }

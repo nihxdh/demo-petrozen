@@ -8,10 +8,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
-  { label: "Certifications", href: "/certifications" },
   { label: "Contact", href: "/contact" },
-  { label: "Privacy Policy", href: "/privacy" },
 ];
 
 const SCROLL_DOWN_THRESHOLD = 12;
@@ -64,7 +61,7 @@ export default function Navbar() {
   return (
     <div
       className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b border-border/70 bg-white/95 text-black backdrop-blur-sm transition-transform duration-300 ease-out",
+        "fixed inset-x-0 top-0 z-50 border-b-2 border-blue-500 bg-white/95 text-black backdrop-blur-sm transition-transform duration-300 ease-out",
         visible ? "translate-y-0 shadow-sm" : "-translate-y-full",
       )}
     >
@@ -89,7 +86,7 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">
-            {navItems.slice(0, 6).map((item) => (
+            {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
                   data-testid={`link-nav-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
@@ -102,17 +99,6 @@ export default function Navbar() {
                 </span>
               </Link>
             ))}
-            <Link href="/privacy">
-              <span
-                data-testid="link-nav-privacy"
-                className={cn(
-                  "text-base transition-colors cursor-pointer hover:text-primary hover:underline underline-offset-8 decoration-primary/60",
-                  isActive("/privacy") ? "text-primary font-semibold" : "text-black/70",
-                )}
-              >
-                Privacy
-              </span>
-            </Link>
           </nav>
 
           <button

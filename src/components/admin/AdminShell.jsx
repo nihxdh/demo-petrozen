@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
-import PageLayout from "@/components/PageLayout";
 import AdminSidebar from "@/components/admin/AdminSidebar";
 import { getAdminToken } from "@/lib/adminAuth";
 import { cn } from "@/lib/utils";
@@ -23,13 +22,15 @@ export default function AdminShell({
   }, [setLocation]);
 
   return (
-    <PageLayout testId={testId}>
-      <div className="container-pad py-8 sm:py-12">
-        <div className="grid gap-6 lg:grid-cols-[280px_1fr] lg:items-start">
-          <AdminSidebar />
+    <div
+      data-testid={testId}
+      className="flex min-h-screen bg-background text-foreground"
+    >
+      <AdminSidebar />
 
-          <div className="min-w-0 space-y-6">
-            <header className="rounded-2xl soft-border bg-card p-5 sm:p-6 shadow-sm shadow-black/5">
+      <main className="min-w-0 flex-1 overflow-auto">
+        <div className="space-y-6 p-6 sm:p-8">
+          <header className="rounded-2xl soft-border bg-card p-5 sm:p-6 shadow-sm shadow-black/5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div className="min-w-0">
                   <h1 className="text-2xl sm:text-[28px] font-semibold tracking-tight">
@@ -57,10 +58,9 @@ export default function AdminShell({
             >
               {children}
             </section>
-          </div>
         </div>
-      </div>
-    </PageLayout>
+      </main>
+    </div>
   );
 }
 

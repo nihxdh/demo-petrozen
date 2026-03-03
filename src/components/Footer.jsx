@@ -31,13 +31,6 @@ export default function Footer() {
                 Services
               </Link>
               <Link
-                href="/industries"
-                data-testid="link-footer-industries"
-                className="text-white/75 hover:text-white"
-              >
-                Industries
-              </Link>
-              <Link
                 href="/certifications"
                 data-testid="link-footer-certifications"
                 className="text-white/75 hover:text-white"

@@ -21,11 +21,11 @@ export default defineConfig({
         ]
       : []),
   ],
-  // Vite root is "client", but we keep .env in "frontend/"
+  // We keep .env in "frontend/"
   envDir: path.resolve(import.meta.dirname),
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@": path.resolve(import.meta.dirname, "src"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
@@ -34,7 +34,7 @@ export default defineConfig({
       plugins: [],
     },
   },
-  root: path.resolve(import.meta.dirname, "client"),
+  root: path.resolve(import.meta.dirname),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,

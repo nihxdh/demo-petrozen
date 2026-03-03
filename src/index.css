@@ -75,6 +75,10 @@
   }
   html {
     text-rendering: geometricPrecision;
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
@@ -103,8 +107,8 @@
     opacity: 0;
     transform: translate3d(0, 18px, 0);
     transition:
-      opacity 700ms ease,
-      transform 900ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      opacity 700ms cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
     will-change: opacity, transform;
   }
 

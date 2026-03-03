@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
-import PageLayout from "@/components/PageLayout";
 import Button from "@/components/Button";
 import { apiClient } from "@/lib/apiClient";
 import { setAdminToken } from "@/lib/adminAuth";
@@ -42,8 +41,11 @@ export default function AdminLogin() {
   };
 
   return (
-    <PageLayout testId="page-admin-login">
-      <div className="container-pad py-10 sm:py-14 min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center">
+    <div
+      data-testid="page-admin-login"
+      className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center py-10 sm:py-14 px-4 sm:px-6 lg:px-8"
+    >
+      <div className="w-full max-w-6xl flex flex-col items-center justify-center">
         <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-2 mb-8">
           <img
             src={IMAGES.LOGO}
@@ -139,7 +141,7 @@ export default function AdminLogin() {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </div>
   );
 }
 
